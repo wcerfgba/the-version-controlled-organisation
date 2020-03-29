@@ -4,7 +4,7 @@ A git workflow for modern organisations.
 
 ## Manage my organisation with `git`? Are you serious?
 
-Completely serious. git -- and the tooling around it -- is capable of providing a simple and complete information structure which can work for many organisations.
+Completely serious. git -- and the tooling around it -- is capable of providing a simple and complete information infrastructure which can work for many organisations.
 
 Most organisations need at least some of the following things:
 
@@ -31,7 +31,11 @@ Assumption:
 
 Reason git works:
 
-* 
+* Files = Documents
+* Hierarchy
+* Changes = Notifications
+* Authored Changes = Provenance
+* Unifying
 
 
 
