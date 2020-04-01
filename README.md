@@ -53,5 +53,6 @@ That said I do think shop-talk can be contained within a more prescribed boundar
 
 ## Bibliography
 
+* git-bug -- https://github.com/MichaelMure/git-bug
 * GitLab Handbook Usage -- <https://about.gitlab.com/handbook/handbook-usage/>
 * Rust RFCs -- <https://github.com/rust-lang/rfcs>
