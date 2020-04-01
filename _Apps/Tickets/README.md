@@ -2,7 +2,9 @@
 
 We present a way to manage items of 'work' such as tasks, stories, support requests, RFCs, sales leads, ... using a ticketing system implemented in Git.
 
-Each subdirectory contains the ticketing system for each department here at VCOCorp. Each department may organise its system to best achieve its objectives, but the following directories are common to all departments:
-* `_Inbox` -- somewhere to put incoming tickets to departments
+Our system is based around the idea of tickets and inboxes. A ticket is a Markdown file, which may conform to a template, which represents some unit of work. An inbox is a directory which can contain tickets and may contain other inboxes [1] . A ticket can only be in a single inbox at each point in time.
 
-There is also a `Personal` subdirectory containing a directory for each employee to manage personal and miscellaneous tasks. Please try to organise your day-to-day work within your departmental ticketing workspace as much as possible. 🙂
+When you install this application, you will need to design and document your inboxes to fit your specific needs and workflow. To get you started, we present a simple three-step workflow with a single template. New tasks are created in `Todo`. When someone starts work on a task, they move the ticket to `In_Progress` [2] . As work is done on the task, people update the ticket. Once the task is 'done', the ticket can be moved to `Completed`.
+
+[1] Inboxes may nest, but we recommend keeping the structure flat and using as few inboxes as possible.
+[2] This move should be performed in a commit by itself, to ensure it shows clearly as a move in the Git log.
