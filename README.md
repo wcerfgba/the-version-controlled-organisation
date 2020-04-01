@@ -31,6 +31,22 @@ Here's why Git works:
 * **Changes = Notifications + Provenance + Safety** - Changes to files in the repo happen in the form of commits, which include an author and a message. Every time you pull the repo, you get a list of all the updates to every scrap of information in your organisation: new work in your inbox, meeting time changed, some replies to a query you opened, all listed cleanly in the repo history. The history-like nature of the Git log gives us the wiki effect, allowing us to reverse breaking changes easily, which empowers people to be bold and make changes in the first place.
 
 
+## How to use this repo
+
+In addition to this document detailing the concept of the Version Controlled Organization, this repo also provides a working implementation and example, based on the theme of a modern SaaS startup. 
+
+Each top level directory represents a distinct 'application' -- a directory structure and files which can be used to manage a particular type of information. Each application contains its own README explaining how it is implemented. If you would like to change the implementation of any applications in the repo, you should to:
+* start a thread in the Meta Forum to discuss the potential changes with others
+* create a branch with any proposed changes you already have
+
+If your proposal is accepted, a Ticket will be created to finalise your changes and merge them in to master.
+
+
+## Contributing
+
+Your feedback and contributions to this project are greatly appreciated. PRs, issues and forks welcome! 💜 
+
+
 ## Notes
 
 [1] Many organisations do not have a formal or obvious forum for shop-talk, and many discussions happen around watercoolers, in meetings, and in private email threads / Slack DMs, which might otherwise be beneficial for an organisation to instead take place in a transparent, long-form, and asynchronous way. Just like this document you are reading now. 😉
