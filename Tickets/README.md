@@ -1,9 +1,8 @@
-# The Version Controlled Work Ticket System
+# The Version Controlled Ticket System
 
-We present a way to manage items of work such as tasks, stories, support requests using a tickting system implemented in git.
+We present a way to manage items of 'work' such as tasks, stories, support requests, RFCs, sales leads, ... using a ticketing system implemented in Git.
 
-Inside this directory we have a number of directories which represent inboxes. An inbox can represent a workflow state ("todo, "doing", "done", "blocked", "in review", "in analysis", ...), or assignment to an individual.
+Each subdirectory contains the ticketing system for each department here at VCOCorp. Each department may organise its system to best achieve its objectives, but the following directories are common to all departments:
+* `_Inbox` -- somewhere to put incoming tickets to departments
 
-A ticket is represented as a (Markdown) file. A ticket can only be in a single inbox at a time.
-
-[Can inboxes be nested? Allow tickets anywhere?]
+There is also a `Personal` subdirectory containing a directory for each employee to manage personal and miscellaneous tasks. Please try to organise your day-to-day work within your departmental ticketing workspace as much as possible. 🙂

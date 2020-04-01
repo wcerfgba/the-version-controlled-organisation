@@ -33,7 +33,7 @@ Here's why Git works:
 
 ## How to use this repo
 
-In addition to this document detailing the concept of the Version Controlled Organization, this repo also provides a working implementation and example, based on the theme of a modern SaaS startup. 
+In addition to this document detailing the concept of the Version Controlled Organization, this repo also provides a working implementation and example, based on the theme of a modern SaaS startup, VCOCorp.
 
 Each top level directory represents a distinct 'application' -- a directory structure and files which can be used to manage a particular type of information. Each application contains its own README explaining how it is implemented. If you would like to change the implementation of any applications in the repo, you should to:
 * start a thread in the Meta Forum to discuss the potential changes with others
