@@ -31,13 +31,13 @@ Fortunately, Git can provide us with a very strong foundation. Here's how:
 
 ## How to use this repo
 
-In addition to this document detailing the concept of the Version Controlled Organization, this repo also provides working implementations of various 'applications'. An application in the VCO sense is a directory structure and files which can be used to manage a particular type of information in a particular way. Application templates live in the `_Apps` directory. In order to use an application, you should 'install' it by copying the template directory and its contents into another location in the repo, and then you can make changes within this 'instance' of the application.
+In addition to this document detailing the concept of the Version Controlled Organization, this repo also provides working implementations of various 'applications'. An application in the VCO sense is a directory structure and files which can be used to manage a particular type of information in a particular way. Application templates live in the `/_Apps` directory. In order to use an application, you should 'install' it by copying the template directory and its contents into another location in the repo, and then you can make changes within this 'instance' of the application.
 
 Applications work on a "trunk-based development"-style workflow: changes should be merged into master as soon as possible and everyone should pull master frequently, so everybody stays as close to master as possible. So long as you do not force-push, it is safe to work with most applications by committing straight to master and pushing master: if you do something wrong, someone will quickly notice, let you know [3] and revert the change. 
 
-The remaining files in this repo provide an example of a Version Controlled Organisation on the theme of a modern SaaS startup, VCOCorp. Each top-level directory corresponds to a department at VCOCorp, and provides a workspace for apps and files for each department to use internally. We also have the top-level `Company` directory for company-wide applications and files -- this is where we share events and notifications that everyone should see, regardless of their department.
+The remaining files in this repo provide an example of a Version Controlled Organisation on the theme of a modern SaaS startup, VCOCorp. Each top-level directory corresponds to a department at VCOCorp, and provides a workspace for apps and files for each department to use internally. We also have the top-level `/Company` directory for company-wide applications and files -- this is where we share events and notifications that everyone should see, regardless of their department.
 
-Our central hub and 'home page' is the index README file in the Company workspace at `Company/README.md`, this would be a good document to visit next.
+Our central hub and 'home page' is the index README file in the Company workspace at [`/Company/README.md`](/Company/README.md), this would be a good document to visit next.
 
 
 ## Contributing

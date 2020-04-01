@@ -12,11 +12,11 @@ VCOCorp is an educational biofuel blockchain Software-as-a-Service company. Foun
 
 ## About this repo
 
-This repo is an implementation of "The Version Controlled Organisation". More information is available in the original essay available in the root `README.md` of this repository. [1]
+This repo is an implementation of "The Version Controlled Organisation". More information is available in the original essay available in the root [`/README.md`](/README.md) of this repository. [1]
 
 ## Using this repo
 
-* If you need to contact someone, look them up in the **Company Contacts Directory** in `Company/Contacts`.
+* If you need to contact someone, look them up in the **Company Contacts Directory** in `/Company/Contacts`.
 
 ## Notes
 
