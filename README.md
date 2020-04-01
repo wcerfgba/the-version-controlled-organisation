@@ -31,11 +31,13 @@ Fortunately, Git can provide us with a very strong foundation. Here's how:
 
 ## How to use this repo
 
-In addition to this document detailing the concept of the Version Controlled Organization, this repo also provides working implementations of various 'applications'. An application in the VCO sense is a directory structure and files which can be used to manage a particular type of information in a particular way. Application templates live in the `_Apps` directory. In order to use an application, you should 'install' it by copying the templat directory and its contents into another location in the repo, and then you can make changes within this 'instance' of the application.
+In addition to this document detailing the concept of the Version Controlled Organization, this repo also provides working implementations of various 'applications'. An application in the VCO sense is a directory structure and files which can be used to manage a particular type of information in a particular way. Application templates live in the `_Apps` directory. In order to use an application, you should 'install' it by copying the template directory and its contents into another location in the repo, and then you can make changes within this 'instance' of the application.
 
-The remaining files in this repo provide an example of a Version Controlled Organisation on the theme of a modern SaaS startup, VCOCorp. Each top-level directory corresponds to a department at VCOCorp, and provides a workspace for apps for each department to use internally. We also have the top-level `VCOCorp` directory for company-wide applications -- this is where we share events and notifications that everyone should see, regardless of their department.
+Applications work on a "trunk-based development"-style workflow: changes should be merged into master as soon as possible and everyone should pull master frequently, so everybody stays as close to master as possible. So long as you do not force-push, it is safe to work with most applications by committing straight to master and pushing master: if you do something wrong, someone will quickly notice, let you know [3] and revert the change. 
 
-Please take a look around the departments and the Git history, and you will soon get a feel for how these 'applications' work. 🙂
+The remaining files in this repo provide an example of a Version Controlled Organisation on the theme of a modern SaaS startup, VCOCorp. Each top-level directory corresponds to a department at VCOCorp, and provides a workspace for apps and files for each department to use internally. We also have the top-level `Company` directory for company-wide applications and files -- this is where we share events and notifications that everyone should see, regardless of their department.
+
+Our central hub and 'home page' is the index README file in the Company workspace at `Company/README.md`, this would be a good document to visit next.
 
 
 ## Contributing
@@ -50,6 +52,8 @@ Your feedback and contributions to this project are greatly appreciated. PRs, is
 [2] OK, I am stretching this a bit here, because the bandwidth for emotional communication can become much narrower with just text. Even a HD video call lacks nuances in body language and voice which form part of our connection to other people and the 'humanness' of our interaction. Any remote organisation with a healthy culture should promote high bandwidth social communication -- imagine if you and your manager never had a 1:1 call! 
 
 That said I do think shop-talk can be contained within a more prescribed boundary. Perhaps we should say any 'operational' information?
+
+[3] This example illustrates an example of an organisational communication use case which is not well-met by Git or VCO, which is real-time signalling. VCO is best supplemented with additional channels for real-time communication.
 
 ## Bibliography
 
