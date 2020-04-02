@@ -14,17 +14,15 @@ Most organisations need at least some of the following things:
 * A shared task list, workflow management, or project management system -- to organise work, people, processes and resources so everyone knows what they need to do, and so we can ensure we are achieving our goals
 * A forum -- somewhere to discuss ideas and vote on proposals [1]
 
-By starting with a few basic processes in the form of this repo, you can use Git to fulfil all of these needs.
+By starting with a few basic processes in the form of this repo, you can use Git to implement an information platform in which you can manage all of these things.
 
-The author's primary assumption is that any information necessary for an organisation to function -- goals, processes, coordination, day-to-day communication, ... -- can be communicated by words and diagrams alone. [2] If this is true then it should be possible to manage an organisation using contemporary computing machinery (hardware and software), although providing an ergonomic implementation with simple semantics which achieves all functional requirements seems like it would be quite challenging...
-
-Fortunately, Git can provide us with a very strong foundation. Here's how:
+The author's primary assumption is that any information necessary for an organisation to function -- goals, processes, coordination, day-to-day communication, ... -- can be communicated by words and diagrams alone. [2] If this is true then it should be possible to manage an organisation using contemporary computing machinery (hardware and software), and indeed it is largely realisable with Git. Here's how:
 
 * **Files = Documents** - Text files like this can capture everything I can think except for possibly diagrams/pictures and music, and for these media we have many filetypes at our disposal. If it's pertinent informtion, I can put it in a computer file.
 
 * **Searchable Hierarchy** - Directories nest into a tree, which if we are careful to structure properly, makes it very easy to know where information should live (self-defining) and makes it easy to navigate all information available (self-indexing). If we keep information in suitable filetypes for our organisation -- we are using Git so plain text files should be our default -- then we can search all of our documents very easily, so it becomes very hard to lose things.
 
-* **Unified** - If we keep all information as files in a single repo, then all of your organisation's information is in one place. Have you ever wondered where the 'file' for your Google Calendar lives, or how it's structured, how you could search or export the information inside? What about your contacts, emails, support tickets, product epics, and customer portfolios? If you bring all of that data into a single platform, you can search everything, cross-reference anything with anything else, using a single set of tools, and this can give you superpowers. 🦸
+* **Unified** - If we keep all of our organisation's information as text files in Git repos, then we have only one set of tooling that we need to learn to manage any information we might encounter. Have you ever wondered where the 'file' for your Google Calendar lives, or how it's structured, how you could search or export the information inside? What about your contacts, emails, support tickets, product epics, and customer portfolios? If you bring all of that data into a single platform, you can search everything, cross-reference anything with anything else, and this can give you superpowers. 🦸
 
 * **Changes = Notifications + Provenance + Confidence** - Changes to files in the repo happen in the form of commits, which include an author and a message. Every time you download updates ("pull the repo"), you get a list of all the updates to every scrap of information in your organisation: new work in your inbox, meeting time changed, some replies to a query you opened, all listed cleanly in the repo history. The history-like nature of the Git log brings about the wiki effect, allowing us to reverse breaking changes easily, which empowers people to be bold and make changes in the first place, which propotes innovation, iteration, and moving fast.
 
@@ -38,6 +36,27 @@ Applications work on a "trunk-based development"-style workflow: changes should 
 The remaining files in this repo provide an example of a Version Controlled Organisation on the theme of a modern SaaS startup, VCOCorp. Each top-level directory corresponds to a department at VCOCorp, and provides a workspace for apps and files for each department to use internally. We also have the top-level `/Company` directory for company-wide applications and files -- this is where we share events and notifications that everyone should see, regardless of their department.
 
 Our central hub and 'home page' is the index README file in the Company workspace at [`/Company/README.md`](/Company/README.md), this would be a good document to visit next.
+
+
+
+
+# Working with Git
+
+In order to implement VCO you will need tools that allow you to easily view the changes to files in your repo at various levels of granularity and optimised for specific use cases. We present the following set of bash- and zsh- compatible aliases wrapping `git log`, with naming inspired by Oh My Zsh: 
+
+```
+alias glo='git log --date=human --pretty="%C(auto)%h  %>(16,trunc)%ad  %>(12,trunc)%an  %<($(($COLUMNS - 42)),trunc)%s"'
+alias gls='glo --stat'
+alias glsr='gls --reverse'
+alias glf='gls -p --'
+alias glfr='glsr -p --'
+```
+
+The first step is a good baseline git log output, to see changes at a high level. Our `glo` alias shows each commit with human-readable date string, author name, and commit message truncated to fit one commit per line:
+
+```
+```
+
 
 
 ## Contributing
