@@ -7,8 +7,8 @@
 *What are the actions we need to carry out to accomplish this task?*
 
 * [x] Finished
-* [] Unfinished
-* [] ...
+* [ ] Unfinished
+* [ ] ...
 
 ## Definition of Done
 *What should we expect once we have finished this task? How can we check we are done?*
