@@ -52,11 +52,56 @@ alias glf='gls -p --'
 alias glfr='glsr -p --'
 ```
 
-The first step is a good baseline git log output, to see changes at a high level. Our `glo` alias shows each commit with human-readable date string, author name, and commit message truncated to fit one commit per line:
+The least granular view of history is a log of each commit -- one commit can contain changes to multiple files, and each commit should represent a single logical set of changes. Our `glo` alias shows each commit with human-readable date string, author name, and commit message truncated to fit one commit per line:
 
 ```
+0ccc27c     5 seconds ago  John Preston  Add git log aliases                 
+fc8945b    25 seconds ago  John Preston  Correct Task template checkboxes    
+830314f         Wed 22:21  John Preston  Improve links and hyperlink         
+7be9a14         Wed 22:17  John Preston  Start structuring VCOCorp workspaces
+387475b         Wed 22:17  John Preston  Note todo for Contacts              
+dccac77         Wed 22:16  John Preston  Improve core documentation          
+d4a94be         Wed 20:30  John Preston  Add reference to git-bug            
+98ba7d7         Wed 20:16  John Preston  Develop Forum                       
+87b20f2         Wed 19:19  John Preston  Begin defining Forum app            
+f3e8c68         Wed 19:19  John Preston  Define Contacts app                 
+c748206         Wed 17:43  John Preston  Update Tickets app template         
+2d1226d         Wed 17:43  John Preston  Update Calendar app template        
+5ffd7eb         Wed 17:11  John Preston  Reorganise                          
+08f80de         Wed 03:08  John Preston  Fix missing newlines in Calendar e..
+53dc4bd         Wed 03:05  John Preston  Continue developing example theme ..
+c37169d         Wed 02:39  John Preston  Rename directories to titlecase     
+20c9dd8         Wed 02:38  John Preston  More README updates                 
+542d00a         Wed 02:10  John Preston  Tidy up and get top level readme i..
+2ed6fa4  Sun Mar 29 23:09  John Preston  WIP: tickets                        
+a2d89f2  Sun Mar 29 18:10  John Preston  Add Calendar workflow               
+a27eafb  Thu Mar 19 21:43  John Preston  Sketching some ideas                
 ```
 
+This top level view allows us to keep an eye on what's happening across a lot of files. If we want to filter commits to particular files or directories, we can use `glo -- <filenames>`, and `glo -- .` to list commits on only files in the current directory and its subdirectories.
+
+The next level of granularity is adding the list of changed files in to each commit, which is exactly what `gls` does:
+
+```
+387475b         Wed 22:17  John Preston  Note todo for Contacts             
+
+ _Apps/Contacts/README.md | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+dccac77         Wed 22:16  John Preston  Improve core documentation         
+
+ Company/README.md | 23 +++++++++++++++++++++++
+ README.md         | 10 +++++++---
+ 2 files changed, 30 insertions(+), 3 deletions(-)
+d4a94be         Wed 20:30  John Preston  Add reference to git-bug           
+
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+98ba7d7         Wed 20:16  John Preston  Develop Forum                      
+
+ _Apps/Forum/README.md | 4 +++-
+ _Apps/Forum/_Topic.md | 9 +++++++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+```
 
 
 ## Contributing
