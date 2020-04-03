@@ -67,6 +67,7 @@ alias glp='gls -p'
 alias glpr='glp --reverse'
 alias glf='glp --'
 alias glfr='glpr --'
+function glg() { glp --color=always | tr "\1\n" "\n\0" | grep --color=always -a -i "$1" | tr "\0" "\n" | less -R }
 ```
 
 TODO \
