@@ -2,6 +2,8 @@
 
 A Git workflow for modern organisations.
 
+*Here be dragons! This document and the concepts within are under heavy revision.* 
+
 ## Manage my organisation with Git? Are you serious?
 
 Yes, I am completely serious. 😊 Git -- and the tooling around it -- is capable of providing a simple and complete information infrastructure which can work for many organisations.
@@ -24,7 +26,55 @@ The author's primary assumption is that any information necessary for an organis
 
 * **Unified** - If we keep all of our organisation's information as text files in Git repos, then we have only one set of tooling that we need to learn to manage any information we might encounter. Have you ever wondered where the 'file' for your Google Calendar lives, or how it's structured, how you could search or export the information inside? What about your contacts, emails, support tickets, product epics, and customer portfolios? If you bring all of that data into a single platform, you can search everything, cross-reference anything with anything else, and this can give you superpowers. 🦸
 
-* **Changes = Notifications + Provenance + Confidence** - Changes to files in the repo happen in the form of commits, which include an author and a message. Every time you download updates ("pull the repo"), you get a list of all the updates to every scrap of information in your organisation: new work in your inbox, meeting time changed, some replies to a query you opened, all listed cleanly in the repo history. The history-like nature of the Git log brings about the wiki effect, allowing us to reverse breaking changes easily, which empowers people to be bold and make changes in the first place, which propotes innovation, iteration, and moving fast.
+* **Commits = Notifications + Provenance + Confidence** - Changes to files in the repo happen in the form of commits, which include an author and a message. Every time you download updates ("pull the repo"), you get a list of all the updates to every scrap of information in your organisation: new work in your inbox, meeting time changed, some replies to a query you opened, all listed cleanly in the repo history. The history-like nature of the Git log brings about the wiki effect, allowing us to reverse breaking changes easily, which empowers people to be bold and make changes in the first place, which propotes innovation, iteration, and moving fast.
+
+## Realising VCO
+
+feature workflows
+
+### Principles
+
+* **`master` is authoritative** - There is a `master` branch that anyone in your organisation can pull to get an accurate and authoritative copy of all information stored in the company repo.
+
+* **Never force-push `master`** - If you are adhering to the principles and implementing your feature workflows, you should never have to force-push `master`. You should never do this because you may cause loss of data. You should probably configure your remotes to disallow force-push on `master`.
+
+* **Pull `master` frequently** - Other people are pushing changes all the time but you need to pull them in order to know about them. Always pull before you push.
+
+* **Commit straight to `master` by default** - Unless there is a process around editing particular files which requires branching, most changes in a VCO repo should be made directly to `master`. If you make a mistake you can always revert.
+
+* **Record all organisational knowledge in the VCO repo** - If you need to communicate with someone, it should probably happen through the repo. Do not email your proposal, put it in an appropriate place in the repo. Do not use a calendar, task list, CRM, wiki, or any other software. If this information is not stored in files in the repo, it will not be available to Git.
+
+* **Use separate repos for access control** - Although making information available to everyone is fine most of the time, most organisations have some information which needs to be restricted to selected eyes. In these instances you should create a separate repository for the department or group to use as a private VCO repo. 
+
+### Notifications
+
+For VCO, the commit log provides a firehose of everything that's happening in your organisation. At the highest level there is the list of commits, and from there we can drill down once to look at the files changed in each commit, and again to look at the changes within each file within each commit.
+
+In addition to increasing the granularity of information visible in the log, we can also filter the commits shown and choose only commits which change particular files, contain specific text, or occur within a given date-time range.
+
+The following aliases -- compatible with bash and zsh and inspired by the git plugin in Oh My Zsh -- provide this functionality:
+
+* `glo` -- One line per commit (commit message wraps), commit hash, human-readable date, author name, and commit message.
+* `gls` and `glsr` -- Adds stat output to each commit showing files changed. Variant for reserse ordering.
+* `glp` and `glpr` -- Adds stat and diff output to each commit, showing all changes. Another variant for reverse ordering.
+* `glf` and `glfr` -- Conveniently filters `glp` output to commits touching given file paths.
+
+```
+alias glo='git log --date=human --pretty="%C(auto)%w($COLUMNS,0,44)%h  %>(16,trunc)%ad  %>(12,trunc)%an  %d %s"'
+alias gls='glo --stat'
+alias glsr='gls --reverse'
+alias glp='gls -p'
+alias glpr='glp --reverse'
+alias glf='glp --'
+alias glfr='glpr --'
+```
+
+TODO \
+@-mentions \
+discussions \
+ticketing systems \
+VCOCorp example 
+
 
 
 ## How to use this repo
@@ -37,71 +87,6 @@ The remaining files in this repo provide an example of a Version Controlled Orga
 
 Our central hub and 'home page' is the index README file in the Company workspace at [`/Company/README.md`](/Company/README.md), this would be a good document to visit next.
 
-
-
-
-# Working with Git
-
-In order to implement VCO you will need tools that allow you to easily view the changes to files in your repo at various levels of granularity and optimised for specific use cases. We present the following set of bash- and zsh- compatible aliases wrapping `git log`, with naming inspired by Oh My Zsh: 
-
-```
-alias glo='git log --date=human --pretty="%C(auto)%h  %>(16,trunc)%ad  %>(12,trunc)%an  %<($(($COLUMNS - 42)),trunc)%s"'
-alias gls='glo --stat'
-alias glsr='gls --reverse'
-alias glf='gls -p --'
-alias glfr='glsr -p --'
-```
-
-The least granular view of history is a log of each commit -- one commit can contain changes to multiple files, and each commit should represent a single logical set of changes. Our `glo` alias shows each commit with human-readable date string, author name, and commit message truncated to fit one commit per line:
-
-```
-0ccc27c     5 seconds ago  John Preston  Add git log aliases                 
-fc8945b    25 seconds ago  John Preston  Correct Task template checkboxes    
-830314f         Wed 22:21  John Preston  Improve links and hyperlink         
-7be9a14         Wed 22:17  John Preston  Start structuring VCOCorp workspaces
-387475b         Wed 22:17  John Preston  Note todo for Contacts              
-dccac77         Wed 22:16  John Preston  Improve core documentation          
-d4a94be         Wed 20:30  John Preston  Add reference to git-bug            
-98ba7d7         Wed 20:16  John Preston  Develop Forum                       
-87b20f2         Wed 19:19  John Preston  Begin defining Forum app            
-f3e8c68         Wed 19:19  John Preston  Define Contacts app                 
-c748206         Wed 17:43  John Preston  Update Tickets app template         
-2d1226d         Wed 17:43  John Preston  Update Calendar app template        
-5ffd7eb         Wed 17:11  John Preston  Reorganise                          
-08f80de         Wed 03:08  John Preston  Fix missing newlines in Calendar e..
-53dc4bd         Wed 03:05  John Preston  Continue developing example theme ..
-c37169d         Wed 02:39  John Preston  Rename directories to titlecase     
-20c9dd8         Wed 02:38  John Preston  More README updates                 
-542d00a         Wed 02:10  John Preston  Tidy up and get top level readme i..
-2ed6fa4  Sun Mar 29 23:09  John Preston  WIP: tickets                        
-a2d89f2  Sun Mar 29 18:10  John Preston  Add Calendar workflow               
-a27eafb  Thu Mar 19 21:43  John Preston  Sketching some ideas                
-```
-
-This top level view allows us to keep an eye on what's happening across a lot of files. If we want to filter commits to particular files or directories, we can use `glo -- <filenames>`, and `glo -- .` to list commits on only files in the current directory and its subdirectories.
-
-The next level of granularity is adding the list of changed files in to each commit, which is exactly what `gls` does:
-
-```
-387475b         Wed 22:17  John Preston  Note todo for Contacts             
-
- _Apps/Contacts/README.md | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-dccac77         Wed 22:16  John Preston  Improve core documentation         
-
- Company/README.md | 23 +++++++++++++++++++++++
- README.md         | 10 +++++++---
- 2 files changed, 30 insertions(+), 3 deletions(-)
-d4a94be         Wed 20:30  John Preston  Add reference to git-bug           
-
- README.md | 1 +
- 1 file changed, 1 insertion(+)
-98ba7d7         Wed 20:16  John Preston  Develop Forum                      
-
- _Apps/Forum/README.md | 4 +++-
- _Apps/Forum/_Topic.md | 9 +++++++++
- 2 files changed, 12 insertions(+), 1 deletion(-)
-```
 
 
 ## Contributing
