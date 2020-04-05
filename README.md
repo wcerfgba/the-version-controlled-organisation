@@ -60,22 +60,14 @@ The following aliases -- compatible with bash and zsh and inspired by the git pl
 * `glf` and `glfr` -- Conveniently filters `glp` output to commits touching given file paths.
 
 ```
-VCO_FORMAT="%C(auto)%w($COLUMNS,0,43)%h  %>(16,trunc)%ad  %>(12,trunc)%an"
-VCO_GLO_FORMAT="$VCO_FORMAT  %d %s"
-VCO_GLS_FORMAT="%n$VCO_GLO_FORMAT%n%b"
-VCO_GLP_FORMAT="%n$VCO_GLS_FORMAT"
+VCO_GLO_FORMAT="%C(auto)%w($COLUMNS,0,43)%h  %>(16,trunc)%ad  %>(12,trunc)%an   %d %s"
 alias glo='git log --date=human --pretty="$VCO_GLO_FORMAT"'
-alias gls='glo --pretty="$VCO_GLS_FORMAT" --stat'
+alias gls='git log --stat'
 alias glsr='gls --reverse'
-alias glp='gls --pretty="$VCO_GLP_FORMAT" -p --word-diff'
+alias glp='git log -p --word-diff'
 alias glpr='glp --reverse'
 alias glf='glp --'
 alias glfr='glpr --'
-function glg() { glp --pretty="%x1e$VCO_GLP_FORMAT" --color=always | \
-                 tr '\n\036' '\0\n' | \
-                 grep -a -i -E --color=always "$1" | \
-                 tr '\0\n' '\n\n' | \
-                 less -R +/$'\x0b'"$1" }
 ```
 
 TODO \
